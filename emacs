@@ -1,25 +1,20 @@
+(setq shell-file-name "/bin/bash")
+
 (setq load-home-init-file t) ;; don't load init file from ~/.xemacs/init.el
 
 (setq load-path (cons "~/.emacs_load_path" load-path))
 (load "~/.emacs_load_path/smooth-scrolling")
 (load "~/.emacs_load_path/smart-tab")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-(require 'rust-mode)
+;; (require 'rust-mode)
 
 (load "~/.emacs_load_path/color-theme-subdued.el")
 (require 'color-theme-subdued)
 (color-theme-subdued)
 
-(set-foreground-color "gray60")
-(set-background-color "black")
-(set-mouse-color "NavyBlue")
-(set-cursor-color "NavyBlue")
 (set-default-font "Monospace-9")
 (add-to-list 'default-frame-alist '(font . "Monospace-9"))
-(add-to-list 'default-frame-alist '(foreground-color . "gray90"))
-(add-to-list 'default-frame-alist '(background-color . "black"))
-(add-to-list 'default-frame-alist '(mouse-color . "NavyBlue"))
-(add-to-list 'default-frame-alist '(cursor-color . "NavyBlue"))
 
 (setq ring-bell-function 'ignore)
 
@@ -43,10 +38,11 @@
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
-(global-set-key [M-left] 'windmove-left)          ;; move to left windnow
-(global-set-key [M-right] 'windmove-right)        ;; move to right window
-(global-set-key [M-up] 'windmove-up)              ;; move to upper window
-(global-set-key [M-down] 'windmove-down)          ;; move to downer window
+(global-set-key (kbd "M-n") 'windmove-left)          ;; move to left windnow
+(global-set-key (kbd "M-m") 'windmove-right)        ;; move to right window
+(global-set-key (kbd "M-b") 'windmove-up)              ;; move to upper window
+(global-set-key (kbd "M-,") 'windmove-down)          ;; move to downer window
+(global-set-key (kbd "C-c C-m") 'magit-status)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -54,17 +50,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(confirm-kill-emacs (quote yes-or-no-p))
+ '(custom-safe-themes (quote ("68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "471877df61bcd989ba4c0a5097654684fcfe918e124d46f811b533e44df34f53" default)))
  '(global-hl-line-mode t)
  '(inhibit-startup-screen t)
  '(mpc-mpd-music-directory "~/music/"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "gray70" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(hl-line ((t (:background "gray3")))))
-          ;; highlight focus line 
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "gray70" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+;;  '(hl-line ((t (:background "gray3")))))
+;;           ;; highlight focus line
 
 (autoload 'magit-status "magit" nil t)
 ;; change magit diff colors
@@ -75,11 +72,8 @@
      (when (not window-system)
        (set-face-background 'magit-item-highlight "black"))))
 
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-
 (server-start)
-(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+;; (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
 (require 'smart-tab)
 (add-hook 'text-mode-hook
@@ -100,7 +94,7 @@
 
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
-  (setq fci-rule-color "gray3")
+  (setq fci-rule-color "gray10")
   (setq-default fill-column 80)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 
@@ -152,12 +146,11 @@
                  ("<S-right>"     . multi-term-next)
                  ("C-v"           . term-paste)
                  ))
-         (add-to-list 'term-bind-key-alist bind))
-     ))
+         (add-to-list 'term-bind-key-alist bind))))
 
-(require 'google-maps)
+;; (require 'google-maps)
 
-(require 'eww)
+;; (require 'eww)
 
 (require 'cl)
  
@@ -167,12 +160,23 @@
     (cond ((not (= (count-windows) 2))
         (message "You need exactly 2 windows to do this."))
         (t
-        (let* ((w1 (first (window-list)))
-            (w2 (second (window-list)))
-            (b1 (window-buffer w1))
-            (b2 (window-buffer w2))
-            (s1 (window-start w1))
-            (s2 (window-start w2)))
+        (let* ((w1 (first
+                        (window-list)
+                    )
+                )
+                (w2
+                    (second
+                        (window-list)
+                    )
+                )
+                (b1 (window-buffer w1))
+                (b2 (window-buffer w2))
+                (s1 (window-start w1))
+                (s2
+                    (window-start w2)
+                )
+            )
+
             (set-window-buffer w1 b2)
             (set-window-buffer w2 b1)
             (set-window-start w1 s2)
@@ -182,3 +186,43 @@
             (if (eq (selected-window) w1)
             (select-window w2)
             (select-window w1))))))
+
+;; (put 'dired-find-alternate-file 'disabled nil)
+
+;; Also known as big-words, holla, yo-vinnie
+(defun yo (yo)
+  "Create and switch to a buffer whose text is gi-normous.
+  Useful for signalling people across the room by showing them my
+  laptop screen."
+  (interactive "sSay yo!: ")
+  (switch-to-buffer "yo")
+  (text-scale-set 10)
+  (visual-line-mode t)
+  (erase-buffer)
+  (insert wat))
+
+;; View tags other window
+(defun view-tag-other-window (tagname &optional next-p regexp-p)
+  "Same as `find-tag-other-window' but doesn't move the point"
+  (interactive (find-tag-interactive "View tag other window: "))
+  (let ((window (get-buffer-window)))
+    (find-tag-other-window tagname next-p regexp-p)
+    (recenter 0)
+    (select-window window)))
+
+(require 'tramp)
+(setq tramp-default-method "ssh")
+(custom-set-faces)
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+
+
+(require 'package)
+(add-to-list 'package-archives
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+(require 'gst-debug)
