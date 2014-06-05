@@ -38,10 +38,10 @@
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
-(global-set-key (kbd "M-n") 'windmove-left)          ;; move to left windnow
-(global-set-key (kbd "M-m") 'windmove-right)        ;; move to right window
-(global-set-key (kbd "M-b") 'windmove-up)              ;; move to upper window
-(global-set-key (kbd "M-,") 'windmove-down)          ;; move to downer window
+(global-set-key (kbd "M-left") 'windmove-left)          ;; move to left windnow
+(global-set-key (kbd "M-right") 'windmove-right)        ;; move to right window
+(global-set-key (kbd "M-up") 'windmove-up)              ;; move to upper window
+(global-set-key (kbd "M-down") 'windmove-down)          ;; move to downer window
 (global-set-key (kbd "C-c C-m") 'magit-status)
 
 (custom-set-variables
@@ -226,3 +226,11 @@
 (package-initialize)
 
 (require 'gst-debug)
+
+(defun toggle-margin-right ()
+  "Toggle the right margin between `fill-column' or window width.
+This command is convenient when reading novel, documentation."
+  (interactive)
+  (if (eq (cdr (window-margins)) nil)
+      (set-window-margins nil 0 (- (window-body-width) fill-column))
+    (set-window-margins nil 0 0) ) )
