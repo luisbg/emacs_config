@@ -38,10 +38,14 @@
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
-(global-set-key (kbd "M-left") 'windmove-left)          ;; move to left windnow
-(global-set-key (kbd "M-right") 'windmove-right)        ;; move to right window
-(global-set-key (kbd "M-up") 'windmove-up)              ;; move to upper window
-(global-set-key (kbd "M-down") 'windmove-down)          ;; move to downer window
+;; (global-set-key (kbd "M-left") 'windmove-left)          ;; move to left windnow
+;; (global-set-key (kbd "M-right") 'windmove-right)        ;; move to right window
+;; (global-set-key (kbd "M-up") 'windmove-up)              ;; move to upper window
+;; (global-set-key (kbd "M-down") 'windmove-down)          ;; move to downer window
+(windmove-default-keybindings 'meta)
+
+(global-set-key (kbd "C-.") 'next-buffer)
+
 (global-set-key (kbd "C-c C-m") 'magit-status)
 
 (custom-set-variables
