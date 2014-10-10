@@ -13,8 +13,8 @@
 (require 'color-theme-subdued)
 (color-theme-subdued)
 
-(set-default-font "Monospace-9")
-(add-to-list 'default-frame-alist '(font . "Monospace-9"))
+(set-default-font "Monospace-10")
+(add-to-list 'default-frame-alist '(font . "Monospace-10"))
 
 (setq ring-bell-function 'ignore)
 
@@ -42,6 +42,7 @@
 ;; (global-set-key (kbd "M-right") 'windmove-right)        ;; move to right window
 ;; (global-set-key (kbd "M-up") 'windmove-up)              ;; move to upper window
 ;; (global-set-key (kbd "M-down") 'windmove-down)          ;; move to downer window
+(global-set-key (kbd "C-<down>") 'other-frame)          ;; move to next frame
 (windmove-default-keybindings 'meta)
 
 (global-set-key (kbd "C-.") 'next-buffer)
@@ -238,3 +239,7 @@ This command is convenient when reading novel, documentation."
   (if (eq (cdr (window-margins)) nil)
       (set-window-margins nil 0 (- (window-body-width) fill-column))
     (set-window-margins nil 0 0) ) )
+
+;; ace mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
