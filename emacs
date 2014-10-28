@@ -13,8 +13,8 @@
 (require 'color-theme-subdued)
 (color-theme-subdued)
 
-(set-default-font "Monospace-10")
-(add-to-list 'default-frame-alist '(font . "Monospace-10"))
+(set-default-font "DejaVu Sans Mono-9")
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-9"))
 
 (setq ring-bell-function 'ignore)
 
@@ -103,18 +103,18 @@
   (setq-default fill-column 80)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 
-(require 'multi-term)
- (setq multi-term-program "/bin/fish")
-(add-hook 'term-mode-hook
-          (lambda ()
-            (setq term-buffer-maximum-size 100000)))
-(add-hook 'term-mode-hook
-          (lambda()
-            (setq yas-dont-activate t)
-            (setq show-trailing-whitespace nil)))
-(add-hook 'term-mode-hook
-          (lambda ()
-            (define-key term-raw-map (kbd "C-y") 'term-paste)))
+;; (require 'multi-term)
+;;  (setq multi-term-program "/bin/fish")
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (setq term-buffer-maximum-size 100000)))
+;; (add-hook 'term-mode-hook
+;;           (lambda()
+;;             (setq yas-dont-activate t)
+;;             (setq show-trailing-whitespace nil)))
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 (defcustom term-unbind-key-list
   '("C-z" "C-x" "C-c" "C-h" "C-y" "<ESC>" "<tab")
@@ -158,7 +158,7 @@
 ;; (require 'eww)
 
 (require 'cl)
- 
+
 (defun swap-windows ()
     "If you have 2 windows, it swaps them."
     (interactive)
@@ -243,3 +243,8 @@ This command is convenient when reading novel, documentation."
 ;; ace mode
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
+
+;; for Arch
+;; (add-to-list 'auto-mode-alist '("PKGBUILD" . shell-script-mode))
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
