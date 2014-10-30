@@ -103,18 +103,18 @@
   (setq-default fill-column 80)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 
-;; (require 'multi-term)
-;;  (setq multi-term-program "/bin/fish")
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (setq term-buffer-maximum-size 100000)))
-;; (add-hook 'term-mode-hook
-;;           (lambda()
-;;             (setq yas-dont-activate t)
-;;             (setq show-trailing-whitespace nil)))
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (define-key term-raw-map (kbd "C-y") 'term-paste)))
+(require 'multi-term)
+(setq multi-term-program "/bin/fish")
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq term-buffer-maximum-size 100000)))
+(add-hook 'term-mode-hook
+          (lambda()
+            (setq yas-dont-activate t)
+            (setq show-trailing-whitespace nil)))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 (defcustom term-unbind-key-list
   '("C-z" "C-x" "C-c" "C-h" "C-y" "<ESC>" "<tab")
