@@ -22,7 +22,7 @@
 (setq ido-enable-flex-matching t)                       ;; ido mode
 (setq ido-everywhere t)
 
-;; (define-key global-map (kbd "RET") 'newline-and-indent) ;; autoindent with the return key
+(define-key global-map (kbd "RET") 'electric-newline-and-maybe-indent) ;; autoindent with the return key
 
 ;; (setq next-line-add-newlines t) ;; add new line with C-n if we are in the last line
 
