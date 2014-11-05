@@ -231,6 +231,7 @@
 (package-initialize)
 
 (require 'gst-debug)
+(setq tags-table-list '("~/dev/gst/head"))
 
 (defun toggle-margin-right ()
   "Toggle the right margin between `fill-column' or window width.
@@ -248,3 +249,24 @@ This command is convenient when reading novel, documentation."
 ;; (add-to-list 'auto-mode-alist '("PKGBUILD" . shell-script-mode))
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
+
+;; navigate using brackets (for coding blocks)
+(defvar xah-left-brackets  nil "list of open bracket chars.")
+(setq xah-left-brackets '("{"))
+(defvar xah-right-brackets nil "list of close bracket chars.")
+(setq xah-right-brackets '("}"))
+
+(defun xah-backward-left-bracket ()
+  "Move cursor to the previous occurrence of left bracket. The list of brackets
+    to jump to is defined by `xah-left-brackets'."
+  (interactive)
+  (search-backward-regexp (eval-when-compile (regexp-opt xah-left-brackets)) nil t))
+
+(defun xah-forward-right-bracket ()
+  "Move cursor to the next occurrence of right bracket. The list of brackets to
+    jump to is defined by `xah-right-brackets'."
+  (interactive)
+  (search-forward-regexp (eval-when-compile (regexp-opt xah-right-brackets)) nil t))
+
+(global-set-key (kbd "<home>") 'xah-backward-left-bracket)
+(global-set-key (kbd "<end>") 'xah-forward-right-bracket)
