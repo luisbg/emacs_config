@@ -9,12 +9,10 @@
 
 ;; (require 'rust-mode)
 
-(load "~/.emacs_load_path/color-theme-subdued.el")
-(require 'color-theme-subdued)
-(color-theme-subdued)
-
 (set-default-font "DejaVu Sans Mono-9")
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-9"))
+(load-theme 'subdued t)
+(set-cursor-color "#000080")
 
 (setq ring-bell-function 'ignore)
 
@@ -37,6 +35,7 @@
 (setq standard-indent 2)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+(show-paren-mode 1)
 
 ;; (global-set-key (kbd "M-left") 'windmove-left)          ;; move to left windnow
 ;; (global-set-key (kbd "M-right") 'windmove-right)        ;; move to right window
@@ -55,7 +54,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(custom-safe-themes (quote ("68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "471877df61bcd989ba4c0a5097654684fcfe918e124d46f811b533e44df34f53" default)))
+ '(custom-safe-themes
+   (quote
+    ("de2c46ed1752b0d0423cde9b6401062b67a6a1300c068d5d7f67725adc6c3afb" "0ddbb18993d95c318e13ff12e73a894d1198fa6a6fc7c3b8d5c04c648105747a" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "98e5e942303b4f356d6573009c96087f9b872f2fa258c673188d913f6faf17ea" "41b6698b5f9ab241ad6c30aea8c9f53d539e23ad4e3963abff4b57c0f8bf6730" "51bea7765ddaee2aac2983fac8099ec7d62dff47b708aa3595ad29899e9e9e44" "f41fd682a3cd1e16796068a2ca96e82cfd274e58b978156da0acce4d56f2b0d5" "405fda54905200f202dd2e6ccbf94c1b7cc1312671894bc8eca7e6ec9e8a41a2" "e53cc4144192bb4e4ed10a3fa3e7442cae4c3d231df8822f6c02f1220a0d259a" "978ff9496928cc94639cb1084004bf64235c5c7fb0cfbcc38a3871eb95fa88f6" "ae8d0f1f36460f3705b583970188e4fbb145805b7accce0adb41031d99bd2580" "9bac44c2b4dfbb723906b8c491ec06801feb57aa60448d047dbfdbd1a8650897" "234249a92c2cf7b61223d9f83e1d9eefcd80fcf6b7a5e9ca03dc9d3f1b122ae2" "17a8fa9430ffd81f242ed3ee95e59629ccf9e1210657536013a0def9b16e68c9" "beeb4fbb490f1a420ea5acc6f589b72c6f0c31dd55943859fc9b60b0c1091468" "bbb51078321186cbbbcb38f9b74ea154154af10c5d9c61d2b0258cb4401ac038" "2c50bf38069a99a18404275e8d139a8a1019a629dab4be9b92b8d5d9c43bbb92" "f07583bdbcca020adecb151868c33820dfe3ad5076ca96f6d51b1da3f0db7105" "50d8de7ef10b93c4c7251888ff845577004e086c5bfb2c4bb71eca51b474063a" "68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "471877df61bcd989ba4c0a5097654684fcfe918e124d46f811b533e44df34f53" default)))
  '(global-hl-line-mode t)
  '(inhibit-startup-screen t)
  '(mpc-mpd-music-directory "~/music/"))
@@ -217,7 +218,12 @@
 
 (require 'tramp)
 (setq tramp-default-method "ssh")
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
