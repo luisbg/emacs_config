@@ -366,3 +366,14 @@ This command is convenient when reading novel, documentation."
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 (global-set-key [(control ?-)] 'text-scale-decrease)
 (global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
+
+(defun indentation-fold ()
+  "Toggle fold all lines larger than indentation on current line"
+  (interactive)
+  (let ((col 1))
+    (save-excursion
+      (back-to-indentation)
+      (setq col (+ 1 (current-column)))
+      (set-selective-display
+       (if selective-display nil (or col 1))))))
+(global-set-key (kbd "<backtab>") 'indentation-fold)
