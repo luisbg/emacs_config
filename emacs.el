@@ -33,7 +33,7 @@
 (scroll-bar-mode -1)
 (setq-default indent-tabs-mode nil)
 (setq standard-indent 2)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 (show-paren-mode 1)
 
@@ -366,6 +366,13 @@ This command is convenient when reading novel, documentation."
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 (global-set-key [(control ?-)] 'text-scale-decrease)
 (global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
+
+(require 'indent-guide)
+(add-hook 'prog-mode-hook
+  (lambda ()
+    (indent-guide-mode 1)))
+(set-face-foreground 'indent-guide-face "black")
+(setq indent-guide-delay 0.0)
 
 (defun indentation-fold ()
   "Toggle fold all lines larger than indentation on current line"
