@@ -365,13 +365,12 @@ This command is convenient when reading novel, documentation."
 (global-set-key [(control ?+)] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 (global-set-key [(control ?-)] 'text-scale-decrease)
-(global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
 
 (require 'indent-guide)
 (add-hook 'prog-mode-hook
   (lambda ()
     (indent-guide-mode 1)))
-(set-face-foreground 'indent-guide-face "black")
+(set-face-foreground 'indent-guide-face "dark slate gray")
 (setq indent-guide-delay 0.0)
 
 (defun indentation-fold ()
@@ -384,3 +383,7 @@ This command is convenient when reading novel, documentation."
       (set-selective-display
        (if selective-display nil (or col 1))))))
 (global-set-key (kbd "<backtab>") 'indentation-fold)
+
+(global-set-key (kbd "C-0") 'hs-hide-block)
+(global-set-key (kbd "C-9") 'hs-show-block)
+(global-set-key (kbd "C-8") 'hs-show-all)
