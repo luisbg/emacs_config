@@ -1,3 +1,8 @@
+(set-default-font "DejaVu Sans Mono-12")
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
+(load-theme 'deeper-blue t)
+(set-cursor-color "chocolate")
+
 (setq shell-file-name "/bin/bash")
 
 (setq load-home-init-file t) ;; don't load init file from ~/.xemacs/init.el
@@ -5,22 +10,17 @@
 (setq load-path (cons "~/.emacs_load_path" load-path))
 (load "~/.emacs_load_path/smooth-scrolling")
 (load "~/.emacs_load_path/smart-tab")
+;; (load "~/.emacs_load_path/custom_mode-line")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; (require 'rust-mode)
-
-(set-default-font "DejaVu Sans Mono-10")
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
-(load-theme 'subdued t)
-(set-cursor-color "#000080")
-
 (setq ring-bell-function 'ignore)
 
 (ido-mode 1)
 (setq ido-enable-flex-matching t)                       ;; ido mode
 (setq ido-everywhere t)
 
-(define-key global-map (kbd "RET") 'electric-newline-and-maybe-indent) ;; autoindent with the return key
+;; (define-key global-map (kbd "RET") 'electric-newline-and-maybe-indent) ;; autoindent with the return key
 
 ;; (setq next-line-add-newlines t) ;; add new line with C-n if we are in the last line
 
@@ -54,12 +54,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(custom-safe-themes
-   (quote
-    ("b52009e1421bf4ba634ccab012e5370d78f542638337a903ed4183faf76a87b1" "1affe85e8ae2667fb571fc8331e1e12840746dae5c46112d5abb0c3a973f5f5a" "ba6d1d0587a4ee00914a1c31b6090a40cd69ad7bef6ada483bfca9e5902ce75e" "9365d9fc5210d51aeb1a603fad6b31ae2a7673ce97edf3e93ba6f63652dd6a76" "d488ad694b90903cafff0a0f952875cf6a2a9010c2676f0d9d70f0ab40e57d69" "de2c46ed1752b0d0423cde9b6401062b67a6a1300c068d5d7f67725adc6c3afb" "0ddbb18993d95c318e13ff12e73a894d1198fa6a6fc7c3b8d5c04c648105747a" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "98e5e942303b4f356d6573009c96087f9b872f2fa258c673188d913f6faf17ea" "41b6698b5f9ab241ad6c30aea8c9f53d539e23ad4e3963abff4b57c0f8bf6730" "51bea7765ddaee2aac2983fac8099ec7d62dff47b708aa3595ad29899e9e9e44" "f41fd682a3cd1e16796068a2ca96e82cfd274e58b978156da0acce4d56f2b0d5" "405fda54905200f202dd2e6ccbf94c1b7cc1312671894bc8eca7e6ec9e8a41a2" "e53cc4144192bb4e4ed10a3fa3e7442cae4c3d231df8822f6c02f1220a0d259a" "978ff9496928cc94639cb1084004bf64235c5c7fb0cfbcc38a3871eb95fa88f6" "ae8d0f1f36460f3705b583970188e4fbb145805b7accce0adb41031d99bd2580" "9bac44c2b4dfbb723906b8c491ec06801feb57aa60448d047dbfdbd1a8650897" "234249a92c2cf7b61223d9f83e1d9eefcd80fcf6b7a5e9ca03dc9d3f1b122ae2" "17a8fa9430ffd81f242ed3ee95e59629ccf9e1210657536013a0def9b16e68c9" "beeb4fbb490f1a420ea5acc6f589b72c6f0c31dd55943859fc9b60b0c1091468" "bbb51078321186cbbbcb38f9b74ea154154af10c5d9c61d2b0258cb4401ac038" "2c50bf38069a99a18404275e8d139a8a1019a629dab4be9b92b8d5d9c43bbb92" "f07583bdbcca020adecb151868c33820dfe3ad5076ca96f6d51b1da3f0db7105" "50d8de7ef10b93c4c7251888ff845577004e086c5bfb2c4bb71eca51b474063a" "68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "471877df61bcd989ba4c0a5097654684fcfe918e124d46f811b533e44df34f53" default)))
  '(global-hl-line-mode t)
  '(inhibit-startup-screen t)
- '(mpc-mpd-music-directory "~/music/"))
+ '(org-agenda-ndays 7)
+ '(org-agenda-show-all-dates t)
+ '(org-agenda-skip-deadline-if-done t)
+ '(org-agenda-skip-scheduled-if-done t))
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
 ;;  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -99,10 +99,16 @@
 (require 'compile)
 
 (require 'fill-column-indicator)
-(setq fci-rule-width 1)
-  (setq fci-rule-color "gray10")
+  (setq fci-rule-width 1)
+  (setq fci-rule-color "tan4")
   (setq-default fill-column 80)
-(add-hook 'after-change-major-mode-hook 'fci-mode)
+(define-globalized-minor-mode global-fci-mode fci-mode
+  (lambda ()
+    (if (and
+         (not (string-match "^\*.*\*$" (buffer-name)))
+         (not (eq major-mode 'org-mode)))
+        (fci-mode 1))))
+(global-fci-mode 1)
 
 (require 'multi-term)
 (setq multi-term-program "/usr/local/bin/fish")
@@ -251,10 +257,76 @@ This command is convenient when reading novel, documentation."
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
 
-;; for Arch
-;; (add-to-list 'auto-mode-alist '("PKGBUILD" . shell-script-mode))
-(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
-(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
+;; org mode
+(require 'org)
+;; Standard key bindings
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(eval-after-load 'org
+  (progn
+    (define-key org-mode-map (kbd "<M-right>") nil)
+;;    (define-key org-agenda-mode-map (kbd "<M-right>") nil)
+    (define-key org-mode-map (kbd "<M-left>") nil)
+;;    (define-key org-agenda-mode-map (kbd "<M-left>") nil)
+    (define-key org-mode-map (kbd "<M-up>") nil)
+;;    (define-key org-agenda-mode-map (kbd "<M-up>") nil)
+    (define-key org-mode-map (kbd "<M-down>") nil)))
+;;    (define-key org-agenda-mode-map (kbd "<M-down>") nil)))
+(setq org-log-done t)
+(setq org-agenda-start-on-weekday nil)
+(setq org-use-property-inheritance t)
+(add-hook 'org-mode-hook
+    (lambda ()
+      (org-indent-mode t))
+     t)
+
+(setq org-agenda-files (list "~/org/todo.org"
+    "~/org/emacs.org"
+    "~/org/gstreamer.org"
+    "~/org/linux.org"
+    "~/org/org-mode.org"
+    "~/org/osg.org"
+    "~/org/personal.org"
+    "~/org/refile.org"
+    "~/org/other/watch_log.org"
+    "~/org/wayland.org"))
+
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING"))))
+
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("NEXT" . "blue")
+        ("STARTED" . "yellow")
+        ("WAITING" . "orange")
+        ("HOLD" . "magenta")
+        ("MEETING" . "forest green")
+        ("CANCELLED" . (:foreground "blue" :weight bold))))
+(setq org-use-fast-todo-selection t)
+
+
+
+(defun org-agenda-timeline-all (&optional arg)
+  (interactive "P")
+  (with-temp-buffer
+    (dolist (org-agenda-file org-agenda-files)
+      (insert-file-contents org-agenda-file nil)
+      (end-of-buffer)
+      (newline))
+    (write-file "/tmp/timeline.org")
+    (org-agenda arg "L")))
+(define-key org-mode-map (kbd "C-c t") 'org-agenda-timeline-all)
+
+(defun my/org-archive-done-tasks ()
+  "Archive finished or cancelled tasks."
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (outline-previous-heading)))
+   "TODO=\"DONE\"|TODO=\"CANCELLED\"" (if (org-before-first-heading-p) 'file 'tree)))
 
 ;; navigate using brackets (for coding blocks)
 (defvar xah-left-brackets  nil "list of open bracket chars.")
@@ -278,3 +350,19 @@ This command is convenient when reading novel, documentation."
 (global-set-key (kbd "<end>") 'xah-forward-right-bracket)
 
 (setq ediff-split-window-function 'split-window-horizontally)
+
+(require 'xcscope)
+(setq-default frame-title-format
+   (list '((buffer-file-name " %f"
+             (dired-directory
+              dired-directory
+              (revert-buffer-function " %b"
+              ("%b - Dir:  " default-directory)))))))
+(setq c-default-style "linux")
+
+;; Change font size dynamically
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [(control ?+)] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+(global-set-key [(control ?-)] 'text-scale-decrease)
+(global-set-key (kbd "C-0") (lambda () (interactive) (text-scale-increase 0)))
