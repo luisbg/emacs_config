@@ -100,7 +100,7 @@
 
 (require 'fill-column-indicator)
   (setq fci-rule-width 1)
-  (setq fci-rule-color "tan4")
+  (setq fci-rule-color "dark slate gray")
   (setq-default fill-column 80)
 (define-globalized-minor-mode global-fci-mode fci-mode
   (lambda ()
