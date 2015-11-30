@@ -10,7 +10,6 @@
 (setq load-path (cons "~/.emacs_load_path" load-path))
 (load "~/.emacs_load_path/smooth-scrolling")
 (load "~/.emacs_load_path/smart-tab")
-;; (load "~/.emacs_load_path/custom_mode-line")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; (require 'rust-mode)
