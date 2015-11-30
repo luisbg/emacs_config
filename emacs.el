@@ -279,9 +279,11 @@ This command is convenient when reading novel, documentation."
 (add-hook 'org-mode-hook
     (lambda ()
       (org-indent-mode t))
-     t)
+    t)
+(setq org-mobile-directory "/goodgumbo@goodgumbo.baconseed.org#8080:notes")
+(setq org-mobile-inbox-for-pull (concat org-directory "/index.org"))
 
-(setq org-agenda-files (list "~/org/todo.org"
+(setq org-agenda-files (list "~/org/list.org"
     "~/org/emacs.org"
     "~/org/gstreamer.org"
     "~/org/linux.org"
