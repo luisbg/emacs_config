@@ -438,3 +438,6 @@ This command is convenient when reading novel, documentation."
 (global-set-key (kbd "C-0") 'hs-hide-block)
 (global-set-key (kbd "C-9") 'hs-show-block)
 (global-set-key (kbd "C-8") 'hs-show-all)
+
+(require 'which-key)
+(which-key-mode)
