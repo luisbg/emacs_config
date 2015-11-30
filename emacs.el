@@ -1,6 +1,6 @@
 (set-default-font "DejaVu Sans Mono-12")
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
-(load-theme 'deeper-blue t)
+(load-theme 'tango-dark t)
 (set-cursor-color "chocolate")
 
 (setq shell-file-name "/bin/bash")
@@ -36,6 +36,7 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 (show-paren-mode 1)
+(set-background-color "black")
 
 ;; (global-set-key (kbd "M-left") 'windmove-left)          ;; move to left windnow
 ;; (global-set-key (kbd "M-right") 'windmove-right)        ;; move to right window
@@ -60,13 +61,13 @@
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-done t))
-;; (custom-set-faces
+(custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
 ;;  ;; If you edit it by hand, you could mess it up, so be careful.
 ;;  ;; Your init file should contain only one such instance.
 ;;  ;; If there is more than one, they won't work right.
 ;;  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "gray70" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
-;;  '(hl-line ((t (:background "gray3")))))
+  '(hl-line ((t (:background "dark slate gray")))))
 ;;           ;; highlight focus line
 
 (autoload 'magit-status "magit" nil t)
@@ -91,7 +92,7 @@
 
 (require 'whitespace)
  (setq whitespace-style '(face empty tabs lines-tail trailing))
-;; (global-whitespace-mode t)
+ (global-whitespace-mode t)
 
 (if (window-system)
   (set-frame-height (selected-frame) 90))
@@ -308,7 +309,55 @@ This command is convenient when reading novel, documentation."
         ("CANCELLED" . (:foreground "blue" :weight bold))))
 (setq org-use-fast-todo-selection t)
 
-
+(setq org-agenda-custom-commands
+      ;; The " " here is the shortcut for this agenda, so `C-c a SPC`
+      '((" " "Agenda"
+         ((agenda "" nil)
+          ;; All items with the "REFILE" tag, everything in refile.org
+          ;; automatically gets that applied
+          (tags "REFILE"
+                ((org-agenda-overriding-header "Tasks to Refile")
+                 (org-tags-match-list-sublevels nil)))
+          ;; All "STARTED" todo items
+          (todo "NEXT"
+                ((org-agenda-overriding-header "To do Next")))
+          ;; All "STARTED" todo items
+          (todo "STARTED"
+                ((org-agenda-overriding-header "In Progress")))
+          ;; All Personal Tasks TODO
+          (tags-todo "Personal+TODO=\"TODO\"+Category=\"Task\""
+                 ((org-agenda-overriding-header "Personal TODO")
+                 ;; sort by time, priority, and category
+                 (org-agenda-sorting-strategy
+                 '(time-up priority-down category-keep))))
+          ;; All OSG Tasks TODO
+          (tags-todo "OSG+TODO=\"TODO\"+Category=\"Task\""
+                 ((org-agenda-overriding-header "OSG TODO")
+                 ;; sort by time, priority, and category
+                 (org-agenda-sorting-strategy
+                 '(time-up priority-down category-keep))))
+          ;; All GStreamer Tasks TODO
+          (tags-todo "GStreamer+TODO=\"TODO\"+Category=\"Task\""
+                 ((org-agenda-overriding-header "GStreamer TODO")
+                 ;; sort by time, priority, and category
+                 (org-agenda-sorting-strategy
+                 '(time-up priority-down category-keep))))
+          ;; All Linux Tasks TODO
+          (tags-todo "Linux+TODO=\"TODO\"+Category=\"Task\""
+                 ((org-agenda-overriding-header "Linux TODO")
+                 ;; sort by time, priority, and category
+                 (org-agenda-sorting-strategy
+                 '(time-up priority-down category-keep))))
+          ;; All emacs Tasks TODO
+          (tags-todo "emacs+TODO=\"TODO\"+Category=\"Task\""
+                 ((org-agenda-overriding-header "emacs TODO")
+                 ;; sort by time, priority, and category
+                 (org-agenda-sorting-strategy
+                 '(time-up priority-down category-keep))))
+            ;; Everything on hold
+          (todo "HOLD"
+                ((org-agenda-overriding-header "On hold"))))
+         nil)))
 
 (defun org-agenda-timeline-all (&optional arg)
   (interactive "P")
