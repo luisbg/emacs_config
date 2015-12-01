@@ -430,10 +430,6 @@ This command is convenient when reading novel, documentation."
        (if selective-display nil (or col 1))))))
 (global-set-key (kbd "<backtab>") 'indentation-fold)
 
-(global-set-key (kbd "C-0") 'hs-hide-block)
-(global-set-key (kbd "C-9") 'hs-show-block)
-(global-set-key (kbd "C-8") 'hs-show-all)
-
 ;; Mode to hint what possible keycombos can come after starting one
 (require 'which-key)
 (which-key-mode)
