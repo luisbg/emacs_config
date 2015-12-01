@@ -19,10 +19,6 @@
 (setq ido-enable-flex-matching t)                       ;; ido mode
 (setq ido-everywhere t)
 
-;; (define-key global-map (kbd "RET") 'electric-newline-and-maybe-indent) ;; autoindent with the return key
-
-;; (setq next-line-add-newlines t) ;; add new line with C-n if we are in the last line
-
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (mouse-wheel-mode t)
