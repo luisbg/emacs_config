@@ -434,5 +434,9 @@ This command is convenient when reading novel, documentation."
 (global-set-key (kbd "C-9") 'hs-show-block)
 (global-set-key (kbd "C-8") 'hs-show-all)
 
+;; Mode to hint what possible keycombos can come after starting one
 (require 'which-key)
 (which-key-mode)
+
+;; Always remove trailing whitespaces before saving file
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
