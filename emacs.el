@@ -436,3 +436,43 @@ This command is convenient when reading novel, documentation."
 
 ;; Always remove trailing whitespaces before saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; configure mode-line (status bar)
+;; use setq-default to set it for *all* modes
+(which-function-mode t)
+(set-face-foreground 'which-func        "light sea green")
+(set-face-background 'mode-line         "gray18")
+(set-face-foreground 'mode-line         "#eeeeec")
+(set-face-background 'modeline-inactive "black")
+(set-face-background 'fringe            "black")
+(setq-default mode-line-format
+  (list
+    ;; the buffer name; the file name as a tool tip
+    '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+        'help-echo (buffer-file-name)))
+
+    ;; line and column
+    "(" ;; '%02' to set to 2 chars at least; prevents flickering
+      (propertize "%02l" 'face 'font-lock-type-face) ":"
+      (propertize "%02c" 'face 'font-lock-type-face)
+    ") "
+
+    ;; relative position, size of file
+    "["
+    (propertize "%p" 'face 'font-lock-comment-face) ;; % above top
+    "] "
+
+    '(which-func-mode ("" which-func-format "--" 'face 'font-lock-comment-face))
+
+    ;; the current major mode for the buffer.
+    "["
+
+    '(:eval (propertize "%m" 'face 'font-lock-comment-face
+              'help-echo buffer-file-coding-system))
+    "] "
+
+    ;; was this buffer modified since the last save?
+    '(:eval (when (buffer-modified-p)
+              (propertize "[Mod]"
+                 'face 'font-lock-warning-face
+                 'help-echo "Buffer has been modified")))))
