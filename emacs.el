@@ -42,7 +42,7 @@
 
 (global-set-key (kbd "C-.") 'next-buffer)
 
-(global-set-key (kbd "C-c C-m") 'magit-status)
+(global-set-key (kbd "C-c C-g") 'magit-status)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -66,11 +66,8 @@
 ;;           ;; highlight focus line
 
 (autoload 'magit-status "magit" nil t)
-;; change magit diff colors
 (eval-after-load 'magit
   '(progn
-     (set-face-foreground 'magit-diff-add "green3")
-     (set-face-foreground 'magit-diff-del "red3")
      (when (not window-system)
        (set-face-background 'magit-item-highlight "black"))))
 
