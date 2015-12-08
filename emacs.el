@@ -488,6 +488,8 @@ This command is convenient when reading novel, documentation."
       smtpmail-debug-info t)
 
 (require 'mu4e)
+(require 'mu4e-maildirs-extension)
+(mu4e-maildirs-extension)
 
 (setq mu4e-maildir (expand-file-name "~/email/syncmail"))
 
@@ -505,9 +507,12 @@ This command is convenient when reading novel, documentation."
 
 (setq mu4e-maildir-shortcuts
       '( ("/INBOX"   . ?i)
-         ("/Sent"    . ?s)
+         ("/Sent"    . ?S)
          ("/Trash"   . ?t)
          ("/INBOX/.GStreamerDevel"   . ?g)
+         ("/INBOX/.LinuxMedia"       . ?m)
+         ("/INBOX/.Personal"         . ?p)
+         ("/INBOX/.OSGSRUK"          . ?s)
          ("/Drafts"  . ?d)))
 
 ;;(eval-after-load 'mu4e
