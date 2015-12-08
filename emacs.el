@@ -491,6 +491,8 @@ This command is convenient when reading novel, documentation."
 (require 'mu4e-maildirs-extension)
 (mu4e-maildirs-extension)
 
+(global-set-key (kbd "C-c C-m") 'mu4e)
+
 (setq mu4e-maildir (expand-file-name "~/email/syncmail"))
 
 (setq mu4e-drafts-folder "/Drafts")
@@ -515,12 +517,16 @@ This command is convenient when reading novel, documentation."
          ("/INBOX/.OSGSRUK"          . ?s)
          ("/Drafts"  . ?d)))
 
-;;(eval-after-load 'mu4e
-;;  (progn
-;;    (define-key org-mode-map (kbd "<M-right>") nil)
-;;    (define-key org-mode-map (kbd "<M-left>") nil)
-;;    (define-key org-mode-map (kbd "<M-up>") nil)
-;;    (define-key mu4e-view-headers-next (kbd "<M-down>") nil)))
+(eval-after-load 'mu4e
+  (progn
+    (define-key mu4e-headers-mode-map (kbd "<M-right>") nil)
+    (define-key mu4e-headers-mode-map (kbd "<M-left>") nil)
+    (define-key mu4e-headers-mode-map (kbd "<M-up>") nil)
+    (define-key mu4e-headers-mode-map (kbd "<M-down>") nil)
+    (define-key mu4e-view-mode-map (kbd "<M-right>") nil)
+    (define-key mu4e-view-mode-map (kbd "<M-left>") nil)
+    (define-key mu4e-view-mode-map (kbd "<M-up>") nil)
+    (define-key mu4e-view-mode-map (kbd "<M-down>") nil)))
 
 ;; show images
 (setq mu4e-show-images t)
