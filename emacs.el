@@ -511,10 +511,10 @@ This command is convenient when reading novel, documentation."
       '( ("/INBOX"   . ?i)
          ("/Sent"    . ?S)
          ("/Trash"   . ?t)
-         ("/INBOX/.GStreamerDevel"   . ?g)
-         ("/INBOX/.LinuxMedia"       . ?m)
-         ("/INBOX/.Personal"         . ?p)
-         ("/INBOX/.OSGSRUK"          . ?s)
+         ("/INBOX/.GST_dev"                . ?g)
+         ("/INBOX/.Linux_Media_patches"    . ?m)
+         ("/INBOX/.Personal"               . ?p)
+         ("/INBOX/.OSGSRUK"                . ?s)
          ("/Drafts"  . ?d)))
 
 (eval-after-load 'mu4e
