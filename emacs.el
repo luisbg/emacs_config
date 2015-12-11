@@ -104,7 +104,7 @@
 (global-fci-mode 1)
 
 (require 'multi-term)
-(setq multi-term-program "/usr/local/bin/fish")
+(setq multi-term-program "/usr/bin/fish")
 (add-hook 'term-mode-hook
           (lambda ()
             (setq term-buffer-maximum-size 100000)))
@@ -490,6 +490,7 @@ This command is convenient when reading novel, documentation."
 (require 'mu4e)
 (require 'mu4e-maildirs-extension)
 (mu4e-maildirs-extension)
+(require 'org-mu4e)
 
 (global-set-key (kbd "C-c C-m") 'mu4e)
 
