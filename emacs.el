@@ -1,7 +1,5 @@
 (set-default-font "DejaVu Sans Mono-12")
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
-(load-theme 'tango-dark t)
-(set-cursor-color "chocolate")
 
 (setq shell-file-name "/bin/bash")
 
@@ -11,6 +9,8 @@
 (load "~/.emacs_load_path/smooth-scrolling")
 (load "~/.emacs_load_path/smart-tab")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'subdued t)
+(set-cursor-color "chocolate")
 
 ;; (require 'rust-mode)
 (setq ring-bell-function 'ignore)
@@ -27,8 +27,9 @@
 (transient-mark-mode t)
 (scroll-bar-mode -1)
 (setq-default indent-tabs-mode nil)
+(setq-default electrinc-indent-mode nil)
 (setq standard-indent 2)
-(setq-default tab-width 2)
+(setq-default tab-width 8)
 (setq indent-line-function 'insert-tab)
 (show-paren-mode 1)
 (set-background-color "black")
@@ -83,7 +84,7 @@
              (smart-tab-mode 1)))
 
 (require 'whitespace)
- (setq whitespace-style '(face empty tabs lines-tail trailing))
+ (setq whitespace-style '(face empty lines-tail trailing))
  (global-whitespace-mode t)
 
 (if (window-system)
@@ -217,12 +218,7 @@
 
 (require 'tramp)
 (setq tramp-default-method "ssh")
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -401,7 +397,7 @@ This command is convenient when reading novel, documentation."
               dired-directory
               (revert-buffer-function " %b"
               ("%b - Dir:  " default-directory)))))))
-(setq c-default-style "linux")
+;; (setq c-default-style "linux")
 
 ;; Change font size dynamically
 (global-set-key [C-mouse-4] 'text-scale-increase)
@@ -409,30 +405,12 @@ This command is convenient when reading novel, documentation."
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 (global-set-key [(control ?-)] 'text-scale-decrease)
 
-(require 'indent-guide)
-(add-hook 'prog-mode-hook
-  (lambda ()
-    (indent-guide-mode 1)))
-(set-face-foreground 'indent-guide-face "dark slate gray")
-(setq indent-guide-delay 0.0)
-
-(defun indentation-fold ()
-  "Toggle fold all lines larger than indentation on current line"
-  (interactive)
-  (let ((col 1))
-    (save-excursion
-      (back-to-indentation)
-      (setq col (+ 1 (current-column)))
-      (set-selective-display
-       (if selective-display nil (or col 1))))))
-(global-set-key (kbd "<backtab>") 'indentation-fold)
-
 ;; Mode to hint what possible keycombos can come after starting one
 (require 'which-key)
 (which-key-mode)
 
 ;; Always remove trailing whitespaces before saving file
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; configure mode-line (status bar)
 ;; use setq-default to set it for *all* modes
@@ -473,81 +451,3 @@ This command is convenient when reading novel, documentation."
               (propertize "[Mod]"
                  'face 'font-lock-warning-face
                  'help-echo "Buffer has been modified")))))
-
-;; mu4e config
-(add-to-list 'load-path "/usr/share/emacs24/site-lisp/mu4e")
-(require 'smtpmail)
-
-; smtp
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials
-      '(("imap.s-osg.org" 587 nil nil))
-      smtpmail-default-smtp-server "imap.s-osg.org"
-      smtpmail-smtp-server "imap.s-osg.org"
-      smtpmail-smtp-service 587
-      smtpmail-debug-info t)
-
-(require 'mu4e)
-(require 'mu4e-maildirs-extension)
-(mu4e-maildirs-extension)
-(require 'org-mu4e)
-
-(global-set-key (kbd "C-c C-m") 'mu4e)
-
-(setq mu4e-maildir (expand-file-name "~/email/syncmail"))
-
-(setq mu4e-drafts-folder "/Drafts")
-(setq mu4e-sent-folder   "/Sent")
-(setq mu4e-trash-folder  "/Trash")
-(setq message-signature-file "~/.emacs.d/.signature") ; put your signature in this file
-
-; get mail
-(setq mu4e-get-mail-command "mbsync -c ~/.emacs.d/.mbsyncrc osg"
-      mu4e-html2text-command "w3m -T text/html"
-      mu4e-update-interval 120
-      mu4e-headers-auto-update t
-      mu4e-compose-signature-auto-include nil)
-
-(setq mu4e-maildir-shortcuts
-      '( ("/INBOX"   . ?i)
-         ("/Sent"    . ?S)
-         ("/Trash"   . ?t)
-         ("/INBOX/.GST_dev"                . ?g)
-         ("/INBOX/.Linux_Media_patches"    . ?m)
-         ("/INBOX/.Personal"               . ?p)
-         ("/INBOX/.OSGSRUK"                . ?s)
-         ("/Drafts"  . ?d)))
-
-(eval-after-load 'mu4e
-  (progn
-    (define-key mu4e-headers-mode-map (kbd "<M-right>") nil)
-    (define-key mu4e-headers-mode-map (kbd "<M-left>") nil)
-    (define-key mu4e-headers-mode-map (kbd "<M-up>") nil)
-    (define-key mu4e-headers-mode-map (kbd "<M-down>") nil)
-    (define-key mu4e-view-mode-map (kbd "<M-right>") nil)
-    (define-key mu4e-view-mode-map (kbd "<M-left>") nil)
-    (define-key mu4e-view-mode-map (kbd "<M-up>") nil)
-    (define-key mu4e-view-mode-map (kbd "<M-down>") nil)))
-
-;; show images
-(setq mu4e-show-images t)
-
-;; use imagemagick, if available
-(when (fboundp 'imagemagick-register-types)
-  (imagemagick-register-types))
-
-;; general emacs mail settings; used when composing e-mail
-;; the non-mu4e-* stuff is inherited from emacs/message-mode
-(setq mu4e-reply-to-address "luisbg@osg.samsung.com"
-    user-mail-address "luisbg@osg.samsung.com"
-    user-full-name  "Luis de Bethencourt")
-
-;; don't save message to Sent Messages, IMAP takes care of this
-; (setq mu4e-sent-messages-behavior 'delete)
-
-;; spell check
-(add-hook 'mu4e-compose-mode-hook
-        (defun my-do-compose-stuff ()
-           "My settings for message composition."
-           (set-fill-column 76)
-           (flyspell-mode)))
