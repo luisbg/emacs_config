@@ -1,2 +1,9 @@
 * magit
+    https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 * multiple eshells at the same time
+* play with the emacs tutorial ()
+* eshell vs ansi-term+fish
+* learn to active some things in only some modes
+    for example not current line highlight in eshell, but yes when coding
+* what browser to use for documentation?
+* highlight matching parenthesis
