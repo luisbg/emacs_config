@@ -21,6 +21,8 @@
 (set-cursor-color "chocolate")
 (column-number-mode t)
 
+(windmove-default-keybindings 'meta)
+
 (add-to-list 'load-path "~/tmp/learning_emacs/load_path/")
 
 ;; Any loaded package configuration needs to go after this line
@@ -34,11 +36,19 @@
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "MEETING"))))
 (setq org-todo-keyword-faces
-      '(("TODO" . org-warning)
-        ("NEXT" . "blue")
-        ("STARTED" . "yellow")
-        ("WAITING" . "orange")
-        ("HOLD" . "magenta")
-        ("MEETING" . "forest green")
-        ("CANCELLED" . (:foreground "blue" :weight bold))))
+    '(("TODO" . org-warning)
+      ("NEXT" . "blue")
+      ("STARTED" . "yellow")
+      ("WAITING" . "orange")
+      ("HOLD" . "magenta")
+      ("MEETING" . "forest green")
+      ("CANCELLED" . (:foreground "blue" :weight bold))))
 (setq org-use-fast-todo-selection t)
+
+;; TRAMP mode
+(setq tramp-default-method "ssh")
+
+;; Other
+(custom-set-variables
+    '(eshell-visual-options (quote (("git" "log" "diff" "show"))))
+)
