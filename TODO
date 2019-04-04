@@ -6,4 +6,5 @@
 * learn to active some things in only some modes
     for example not current line highlight in eshell, but yes when coding
 * what browser to use for documentation?
-* highlight matching parenthesis
+* relearn the keycombo to quickly switch between buffers
+    faster than 'C-x b' when you want to see the last one used

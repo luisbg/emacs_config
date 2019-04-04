@@ -27,6 +27,11 @@
 ;; Highlight current line
 (global-hl-line-mode +1)
 
+;; Highlight the matching parenthesis
+;; if the matching isn't visible it highlights the expression
+(show-paren-mode 1)
+(setq show-paren-style 'mixed)
+
 ;; Move between windows with the meta key
 (windmove-default-keybindings 'meta)
 
