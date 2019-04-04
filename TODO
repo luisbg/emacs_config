@@ -1,10 +1,19 @@
 * magit
     https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 * multiple eshells at the same time
-* play with the emacs tutorial ()
+    and a shell with better color rendering (eg. git status)
+* play with the emacs tutorial
+    (Help->Emacs Tutorial)
+    (C-h t)
 * eshell vs ansi-term+fish
 * learn to active some things in only some modes
     for example not current line highlight in eshell, but yes when coding
 * what browser to use for documentation?
 * relearn the keycombo to quickly switch between buffers
     faster than 'C-x b' when you want to see the last one used
+* make text wrap in only the current buffer
+    (M-x visual-line-mode)
+* switch to a sliding down pager, instead of jumping from page to page
+* matching parenthesis behaves weirdly in some Rust cases
+    is there a better Rust mode?
+* play with other packages listed in M-x package-list-packages

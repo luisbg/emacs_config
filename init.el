@@ -39,10 +39,19 @@
 (global-set-key [(control ?+)] 'text-scale-increase)
 (global-set-key [(control ?-)] 'text-scale-decrease)
 
+;; To make text wrap in only the current buffer
+;; M-x visual-line-mode
+
 ;; Add our path to the load-path
 (add-to-list 'load-path "~/tmp/learning_emacs/load_path/")
 
 ;; Any loaded package configuration needs to go after this line
+
+;; We need to bring more packages to have things like magit
+(require 'package)
+(add-to-list 'package-archives
+    '("melpa-stable" . "http://melpa.org/packages/") t)
+;; After this we still need to do: M-x package-refresh-contents
 
 ;; Org-mode
 (add-hook 'org-mode-hook
