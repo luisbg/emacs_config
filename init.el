@@ -35,6 +35,10 @@
 ;; Move between windows with the meta key
 (windmove-default-keybindings 'meta)
 
+;; Change font size dynamically
+(global-set-key [(control ?+)] 'text-scale-increase)
+(global-set-key [(control ?-)] 'text-scale-decrease)
+
 ;; Add our path to the load-path
 (add-to-list 'load-path "~/tmp/learning_emacs/load_path/")
 
