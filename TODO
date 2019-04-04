@@ -26,3 +26,5 @@
 * matching parenthesis behaves weirdly in some Rust cases
     is there a better Rust mode?
 * play with other packages listed in M-x package-list-packages
+* get autocompletion
+    maybe with smart-tab, but maybe there is something better
