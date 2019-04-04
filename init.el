@@ -8,6 +8,7 @@
 (setq user-init-file (or load-file-name (buffer-file-name)))
 (setq user-emacs-directory (file-name-directory user-init-file))
 
+;; Make the UI more minimal
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -23,8 +24,13 @@
 (set-cursor-color "chocolate")
 (column-number-mode t)
 
+;; Highlight current line
+(global-hl-line-mode +1)
+
+;; Move between windows with the meta key
 (windmove-default-keybindings 'meta)
 
+;; Add our path to the load-path
 (add-to-list 'load-path "~/tmp/learning_emacs/load_path/")
 
 ;; Any loaded package configuration needs to go after this line
