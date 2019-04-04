@@ -1,5 +1,14 @@
 * magit
     https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
+    M-x magit-status
+    '?' (to get a list of actions you can do, nice help)
+    'n' and 'p' to move to the next or previous section
+    '+' and '-' to show more or less of the current section
+    's' and 'u' to stage and unstage a chunk
+    'c' to start the commit
+        or instead you can use 'a' to ammend
+    in the git log: 'r' to reword
+    Next to learn: git logging
 * multiple eshells at the same time
     and a shell with better color rendering (eg. git status)
 * play with the emacs tutorial
