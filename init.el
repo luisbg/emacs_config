@@ -12,7 +12,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(setq custom-file "/Users/luisbg/tmp/learning_emacs/.emacs-custom.el")
+(setq custom-file "/Users/luisbg/tmp/learning_emacs/emacs-custom.el")
 (load custom-file)
 
 (ido-mode 1)
@@ -47,10 +47,17 @@
 
 ;; Any loaded package configuration needs to go after this line
 
+;; color theme
+(add-to-list 'custom-theme-load-path "~/tmp/learning_emacs/load_path/")
+(load-theme 'cyberpunk t)
+;; M-x color-theme-buffer-local
+
 ;; We need to bring more packages to have things like magit
 (require 'package)
 (add-to-list 'package-archives
-    '("melpa-stable" . "http://melpa.org/packages/") t)
+	     '("melpa-stable" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; After this we still need to do: M-x package-refresh-contents
 
 ;; Org-mode
