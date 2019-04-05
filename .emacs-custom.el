@@ -9,7 +9,7 @@
  '(eshell-visual-options (quote (("git" "log" "diff" "show"))))
  '(package-selected-packages
    (quote
-    (magit solarized-theme rust-mode monokai-theme go-mode))))
+    (w3m magit solarized-theme rust-mode monokai-theme go-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

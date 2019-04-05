@@ -113,3 +113,6 @@
             (if (eq (selected-window) w1)
             (select-window w2)
             (select-window w1))))))
+
+;; w3m
+(require 'w3m-load)
