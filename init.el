@@ -121,5 +121,11 @@
             (select-window w2)
             (select-window w1))))))
 
+;; multiple eshells (easy but there are more convenient options)
+(defun eshell-new()
+  "Open a new instance of eshell."
+  (interactive)
+  (eshell 'N))
+
 ;; w3m
 (require 'w3m-load)

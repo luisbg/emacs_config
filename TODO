@@ -9,8 +9,6 @@
         or instead you can use 'a' to ammend
     in the git log: 'r' to reword
     Next to learn: git logging
-* multiple eshells at the same time
-    and a shell with better color rendering (eg. git status)
 * play with the emacs tutorial
     (Help->Emacs Tutorial)
     (C-h t)
