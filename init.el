@@ -57,7 +57,7 @@
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+	     '("melpa" . "http://melpa.org/packages/") t)
 ;; After this we still need to do: M-x package-refresh-contents
 
 ;; Org-mode
@@ -129,3 +129,8 @@
 
 ;; w3m
 (require 'w3m-load)
+
+;; don't jump pages
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+(setq smooth-scroll-margin 3)
