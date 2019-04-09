@@ -129,6 +129,7 @@
 
 ;; w3m
 (require 'w3m-load)
+(setq w3m-default-display-inline-images t)
 
 ;; don't jump pages
 (require 'smooth-scrolling)
