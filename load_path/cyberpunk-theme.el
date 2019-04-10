@@ -607,10 +607,8 @@
    `(org-checkbox ((,class (:background ,cyberpunk-gray-2 :foreground ,cyberpunk-black
                                    :box (:line-width 1 :style released-button)))))
    `(org-date ((,class (:foreground ,cyberpunk-blue-7 :underline t))))
-   `(org-done ((,class (:bold t :weight bold :foreground ,cyberpunk-green
-                              :box (:line-width 1 :style none)))))
-   `(org-todo ((,class (:bold t :foreground ,cyberpunk-orange :weight bold
-                              :box (:line-width 1 :style none)))))
+   `(org-done ((,class (:bold t :weight bold :foreground ,cyberpunk-green))))
+   `(org-todo ((,class (:bold t :foreground ,cyberpunk-orange :weight bold))))
    `(org-level-1 ((,class (:foreground ,cyberpunk-pink-1))))
    `(org-level-2 ((,class (:foreground ,cyberpunk-yellow))))
    `(org-level-3 ((,class (:foreground ,cyberpunk-blue-5))))

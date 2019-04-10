@@ -76,6 +76,7 @@
       ("HOLD" . "magenta")
       ("MEETING" . "forest green")
       ("CANCELLED" . (:foreground "blue" :weight bold))))
+(setq org-log-done 'time)
 (setq org-use-fast-todo-selection t)
 
 ;; TRAMP mode
