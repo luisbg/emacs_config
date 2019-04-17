@@ -12,6 +12,9 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Avoid the bell ring
+(setq ring-bell-function 'ignore)
+
 (setq custom-file "/Users/luisbg/tmp/learning_emacs/emacs-custom.el")
 (load custom-file)
 
