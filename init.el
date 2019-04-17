@@ -78,7 +78,12 @@
       ("CANCELLED" . (:foreground "blue" :weight bold))))
 (setq org-log-done 'time)
 (setq org-use-fast-todo-selection t)
-
+(eval-after-load 'org
+  (progn
+    (define-key org-mode-map (kbd "<M-right>") nil)
+    (define-key org-mode-map (kbd "<M-left>") nil)
+    (define-key org-mode-map (kbd "<M-up>") nil)
+    (define-key org-mode-map (kbd "<M-down>") nil)))
 ;; TRAMP mode
 (setq tramp-default-method "ssh")
 
@@ -129,7 +134,6 @@
   (eshell 'N))
 
 ;; w3m
-(require 'w3m-load)
 (setq w3m-default-display-inline-images t)
 
 ;; don't jump pages

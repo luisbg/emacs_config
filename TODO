@@ -28,3 +28,4 @@
     maybe with smart-tab, but maybe there is something better
 * CTAGS for GStreamer and MPU code? So we can jump to function definitions
 * Try a twitter client in emacs
+* Block emacs from making a bell ring
